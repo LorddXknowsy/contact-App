@@ -1,0 +1,26 @@
+
+<div>
+  <form class="form-group" (ngSubmit)="addContact(myform)"  #myform="ngForm">
+      <input type="text" class="form-control" [(ngModel)]="contact.firstname"  #firstnameInput="ngModel" name="firstname"
+      placeholder="First Name" required minlength="4">
+        <div *ngIf="firstnameInput.invalid && firstnameInput.touched" class="invalid">
+
+          <div class="invalid-req" *ngIf="firstnameInput.errors.minlength">
+            Min should be 4 symbol
+          </div>
+        </div>
+      <input type="text" class="form-control" [(ngModel)]="contact.lastname"  #lastnameInput="ngModel" name="lastname" placeholder="Last Name" required>
+      <div *ngIf="lastnameInput.invalid && lastnameInput.touched" class="invalid">
+
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="contact.phone"  #numberInput="ngModel" name="phone" placeholder="Phone Number" required>
+      <div *ngIf="numberInput.invalid && numberInput.touched" class="invalid">
+
+      </div>
+      <input type="text" class="form-control" [(ngModel)]="contact.email"  #emailInput="ngModel" name="email" placeholder="Email">
+      <input type="text" class="form-control" [(ngModel)]="contact.address"  #addressInput="ngModel" name="address" placeholder="Address">
+    <button *ngIf="isUpdated" type="submit" [disabled]="myform.invalid" >Add</button>
+    <button *ngIf="!isUpdated">Save</button>
+
+  </form>
+</div>
